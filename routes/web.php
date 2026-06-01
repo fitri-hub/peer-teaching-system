@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TutorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,9 +15,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
-    Route::get('/admin', function () {
-        return 'Halaman Admin';
-    });
+    Route::resource('subjects', SubjectController::class);
+
+    Route::resource('tutors', TutorController::class);
 
 });
 
