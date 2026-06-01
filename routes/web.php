@@ -7,6 +7,7 @@ use App\Http\Controllers\TutorController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,6 +82,18 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('dashboard.admin');
+});
+
+Route::middleware(['auth', 'role:tutor'])->group(function () {
+    Route::get('/tutor/dashboard', [DashboardController::class, 'tutor'])->name('dashboard.tutor');
+});
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/student/dashboard', [DashboardController::class, 'student'])->name('dashboard.student');
 });
 
 require __DIR__.'/auth.php';
