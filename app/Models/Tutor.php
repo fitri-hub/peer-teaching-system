@@ -21,4 +21,14 @@ class Tutor extends Model
     {
         return $this->hasMany(Material::class);
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
+    }
 }

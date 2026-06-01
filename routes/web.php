@@ -6,6 +6,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\RatingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,6 +72,15 @@ Route::middleware(['auth', 'role:tutor'])->group(function () {
 Route::middleware(['auth', 'role:student'])->group(function () {
     Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
     Route::get('/materials/{material}/download', [MaterialController::class, 'download'])->name('materials.download');
+});
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/ratings/create', [RatingController::class, 'create'])->name('ratings.create');
+    Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
 });
 
 require __DIR__.'/auth.php';
