@@ -11,6 +11,30 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::get('/admin', function () {
+        return 'Halaman Admin';
+    });
+
+});
+
+Route::middleware(['auth', 'role:tutor'])->group(function () {
+
+    Route::get('/tutor', function () {
+        return 'Halaman Tutor';
+    });
+
+});
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+
+    Route::get('/student', function () {
+        return 'Halaman Student';
+    });
+
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
