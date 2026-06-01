@@ -16,4 +16,9 @@ class Tutor extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
 }

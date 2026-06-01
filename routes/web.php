@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\MaterialController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,6 +61,16 @@ Route::middleware(['auth', 'role:tutor'])->group(function () {
     Route::get('/tutor/bookings', [BookingController::class, 'tutorBookings'])->name('bookings.tutor');
     Route::patch('/bookings/{booking}/approve', [BookingController::class, 'approve'])->name('bookings.approve');
     Route::patch('/bookings/{booking}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
+});
+
+Route::middleware(['auth', 'role:tutor'])->group(function () {
+    Route::get('/materials/create', [MaterialController::class, 'create'])->name('materials.create');
+    Route::post('/materials', [MaterialController::class, 'store'])->name('materials.store');
+});
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
+    Route::get('/materials/{material}/download', [MaterialController::class, 'download'])->name('materials.download');
 });
 
 require __DIR__.'/auth.php';
