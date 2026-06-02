@@ -1,37 +1,93 @@
-<h1>Edit Tutor</h1>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Tutor</title>
 
-<form action="{{ route('tutors.update', $tutor->id) }}" method="POST">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    @csrf
-    @method('PUT')
+<body style="background:#fde8e7;">
 
-    <input
-        type="text"
-        name="nama"
-        value="{{ $tutor->nama }}">
+<div class="container py-5">
 
-    <br><br>
+    <h2 class="fw-bold mb-4" style="color:#3b2f42;">
+        Edit Tutor
+    </h2>
 
-    <select name="subject_id">
+    <div class="card border-0 shadow-sm" style="border-radius:20px;">
+        <div class="card-body p-4">
 
-        @foreach($subjects as $subject)
+            <form action="{{ route('tutors.update', $tutor->id) }}" method="POST">
+                @csrf
+                @method('PUT')
 
-            <option value="{{ $subject->id }}" {{ $tutor->subject_id == $subject->id ? 'selected' : '' }}>
-                {{ $subject->nama_mapel }}
-            </option>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Nama Tutor
+                    </label>
 
-        @endforeach
+                    <input type="text"
+                           name="nama"
+                           class="form-control"
+                           value="{{ $tutor->nama }}"
+                           style="border-radius:12px;">
+                </div>
 
-    </select>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Mata Pelajaran
+                    </label>
 
-    <br><br>
+                    <select name="subject_id"
+                            class="form-select"
+                            style="border-radius:12px;">
 
-    <textarea name="bio">{{ $tutor->bio }}</textarea>
+                        @foreach($subjects as $subject)
 
-    <br><br>
+                            <option value="{{ $subject->id }}"
+                                {{ $tutor->subject_id == $subject->id ? 'selected' : '' }}>
+                                {{ $subject->nama_mapel }}
+                            </option>
 
-    <button type="submit">
-        Update
-    </button>
+                        @endforeach
 
-</form>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Bio Tutor
+                    </label>
+
+                    <textarea name="bio"
+                              class="form-control"
+                              rows="4"
+                              style="border-radius:12px;">{{ $tutor->bio }}</textarea>
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn text-white"
+                            style="background:#4a3a50; border-radius:12px;">
+                        Update
+                    </button>
+
+                    <a href="{{ route('tutors.index') }}"
+                       class="btn btn-light"
+                       style="border-radius:12px;">
+                        Kembali
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

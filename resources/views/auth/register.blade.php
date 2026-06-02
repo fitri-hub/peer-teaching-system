@@ -1,52 +1,108 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Peer Teaching</title>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background:#fde8e7;">
+
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+    <div class="card border-0 shadow-sm" style="border-radius:24px; width:500px;">
+        <div class="card-body p-5">
+
+            <div class="text-center mb-4">
+                <h2 class="fw-bold mb-1" style="color:#3b2f42;">
+                    Register
+                </h2>
+
+                <p class="mb-0" style="color:#b9828c;">
+                    Buat akun baru Peer Teaching System
+                </p>
+            </div>
+
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Nama
+                    </label>
+
+                    <input type="text"
+                           name="name"
+                           class="form-control"
+                           style="border-radius:12px;"
+                           required
+                           autofocus>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           class="form-control"
+                           style="border-radius:12px;"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Password
+                    </label>
+
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           style="border-radius:12px;"
+                           required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold" style="color:#3b2f42;">
+                        Konfirmasi Password
+                    </label>
+
+                    <input type="password"
+                           name="password_confirmation"
+                           class="form-control"
+                           style="border-radius:12px;"
+                           required>
+                </div>
+
+                <button type="submit"
+                        class="btn w-100 text-white"
+                        style="background:#c48691; border-radius:12px;">
+                    Register
+                </button>
+
+                <div class="text-center mt-4">
+
+                    <span style="color:#b9828c;">
+                        Sudah punya akun?
+                    </span>
+
+                    <a href="{{ route('login') }}"
+                       style="color:#3b2f42;
+                              font-weight:600;
+                              text-decoration:none;">
+                        Login
+                    </a>
+
+                </div>
+
+            </form>
+
         </div>
+    </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</body>
+</html>

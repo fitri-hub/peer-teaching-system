@@ -33,7 +33,7 @@ class MaterialController extends Controller
             'file' => $filePath,
         ]);
 
-        return redirect()->route('materials.create');
+        return redirect()->route('materials.create')->with('success', 'Materi berhasil diupload.');
     }
 
     public function download(Material $material)

@@ -36,7 +36,8 @@
             </div>
         </div>
         <div class="col-6 col-md-4">
-            <div class="card stat-card stat-card-4">
+            <div class="card stat-card"
+                style="background:linear-gradient(135deg,#c48691,#d9a0a8) !important;">
                 <i class="fas fa-calendar stat-icon"></i>
                 <div class="stat-number">{{ $totalBookings }}</div>
                 <div class="stat-label">Total Booking</div>

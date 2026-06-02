@@ -39,7 +39,15 @@ class BookingController extends Controller
 
     public function tutorBookings()
     {
-        $bookings = Booking::with('student', 'tutor.subject')->get();
+        $tutor = \App\Models\Tutor::where('nama', auth()->user()->name)->first();
+
+        if (!$tutor) {
+            $bookings = collect();
+        } else {
+            $bookings = Booking::with('student', 'tutor.subject')
+                ->where('tutor_id', $tutor->id)
+                ->get();
+        }
 
         return view('bookings.tutor', compact('bookings'));
     }

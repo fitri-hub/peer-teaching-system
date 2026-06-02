@@ -39,10 +39,16 @@ class DashboardController extends Controller
 
     public function tutor()
     {
-        $tutor = auth()->user()->tutor;
-        $bookings = $tutor
-            ? Booking::where('tutor_id', $tutor->id)->with(['student', 'tutor.subject'])->latest()->get()
-            : collect();
+        $tutor = \App\Models\Tutor::where('nama', auth()->user()->name)->first();
+
+        if (!$tutor) {
+            $bookings = collect();
+        } else {
+            $bookings = \App\Models\Booking::with('student', 'tutor.subject')
+                ->where('tutor_id', $tutor->id)
+                ->latest()
+                ->get();
+        }
 
         return view('dashboards.tutor', compact('bookings'));
     }
