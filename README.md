@@ -217,17 +217,33 @@ npm run dev
 
 ##  Screenshot
 
-Tambahkan screenshot berikut:
-
 * Halaman Login
+  <img width="1600" height="834" alt="WhatsApp Image 2026-06-02 at 18 45 45" src="https://github.com/user-attachments/assets/525fb71c-ddca-48ca-b1f2-5e1cebf4cce2" />
+  
 * Dashboard Admin
+  <img width="1600" height="838" alt="WhatsApp Image 2026-06-02 at 18 45 46 (1)" src="https://github.com/user-attachments/assets/4ddf088a-7efd-437b-a7b2-229331681037" />
+
 * Dashboard Tutor
+  <img width="1600" height="837" alt="WhatsApp Image 2026-06-02 at 18 45 46" src="https://github.com/user-attachments/assets/631a107a-796a-45ba-a92b-4ee7f7ec892f" />
+
 * Dashboard Student
-* Manajemen Mata Pelajaran
+  <img width="1600" height="834" alt="WhatsApp Image 2026-06-02 at 18 45 47" src="https://github.com/user-attachments/assets/9aab8935-a478-4c6e-9b77-081092087814" />
+
+* Manajemen Mata Kuliah
+  <img width="1600" height="838" alt="WhatsApp Image 2026-06-02 at 18 45 47 (1)" src="https://github.com/user-attachments/assets/e739fda7-464c-459c-990f-3ba507bb0fa0" />
+
 * Manajemen Tutor
+  <img width="1600" height="836" alt="WhatsApp Image 2026-06-02 at 18 45 48" src="https://github.com/user-attachments/assets/09cdf2a6-8e40-4189-a1de-88f786ad4e48" />
+
 * Booking Tutor
+  <img width="1600" height="838" alt="WhatsApp Image 2026-06-02 at 18 45 48 (1)" src="https://github.com/user-attachments/assets/c65bd836-f80a-4e0b-a817-74e5c913eb3a" />
+
 * Sistem Materi
+  <img width="1600" height="838" alt="WhatsApp Image 2026-06-02 at 18 45 49 (1)" src="https://github.com/user-attachments/assets/b3371a27-add5-4c0f-b540-18481f4aa20d" />
+
 * Sistem Rating
+  <img width="1600" height="841" alt="WhatsApp Image 2026-06-02 at 18 45 49" src="https://github.com/user-attachments/assets/8dc82f70-3925-4adb-a29e-aaccb32ba288" />
+
 
 ---
 
