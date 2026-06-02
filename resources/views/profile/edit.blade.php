@@ -1,29 +1,39 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+    <x-slot name="header">Profil</x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            {{-- Profile Info --}}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-user-circle mr-2" style="color:var(--pharlap)"></i> Informasi Profil
+                </div>
+                <div class="card-body p-4">
                     @include('profile.partials.update-profile-information-form')
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
+            {{-- Update Password --}}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-lock mr-2" style="color:var(--pharlap)"></i> Ubah Password
+                </div>
+                <div class="card-body p-4">
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
+            {{-- Delete Account --}}
+            <div class="card mb-4" style="border-left: 4px solid #e05560 !important;">
+                <div class="card-header" style="color:#c0404a">
+                    <i class="fas fa-trash mr-2"></i> Hapus Akun
+                </div>
+                <div class="card-body p-4">
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+
         </div>
     </div>
 </x-app-layout>
