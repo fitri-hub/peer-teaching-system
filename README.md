@@ -1,62 +1,245 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Peer Teaching System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##  Deskripsi Project
 
-## About Laravel
+Peer Teaching System adalah aplikasi berbasis web yang dikembangkan untuk memfasilitasi kegiatan pembelajaran antar mahasiswa (peer teaching). Sistem ini memungkinkan mahasiswa untuk mencari tutor, melakukan booking sesi belajar, mengakses materi pembelajaran, memberikan penilaian kepada tutor, serta memantau aktivitas pembelajaran melalui dashboard yang disesuaikan dengan peran pengguna.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Project ini dikembangkan menggunakan Laravel Framework dengan menerapkan konsep Role-Based Access Control (RBAC) sehingga setiap pengguna memiliki hak akses yang berbeda sesuai perannya.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+##  Role Pengguna
 
-## Learning Laravel
+### Admin
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Mengelola data mata pelajaran
+* Mengelola profil tutor
+* Melihat statistik sistem
+* Memantau seluruh aktivitas booking
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Tutor
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+* Mengelola profil tutor
+* Melihat jadwal booking
+* Mengunggah materi pembelajaran
+* Menerima atau menolak permintaan booking
 
-## Agentic Development
+### Student
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Melakukan booking tutor
+* Melihat status booking
+* Mengakses dan mengunduh materi
+* Memberikan rating dan ulasan kepada tutor
+* Melihat riwayat pembelajaran
+
+---
+
+##  Fitur Utama
+
+### 1. Authentication System
+
+* Login
+* Register
+* Logout
+* Middleware Authentication
+
+### 2. Role & Access Control
+
+* Role Admin
+* Role Tutor
+* Role Student
+* Middleware Role
+* Pembatasan akses berdasarkan role
+
+### 3. Subject Management
+
+* Create Subject
+* Read Subject
+* Update Subject
+* Delete Subject
+
+### 4. Tutor Management
+
+* Create Tutor Profile
+* Read Tutor Profile
+* Update Tutor Profile
+* Delete Tutor Profile
+
+### 5. Booking System
+
+* Student melakukan booking tutor
+* Tutor menerima booking
+* Tutor menolak booking
+* Monitoring status booking
+
+### 6. Material System
+
+* Upload materi oleh tutor
+* Melihat daftar materi
+* Download materi oleh student
+
+### 7. Rating System
+
+* Student memberikan rating
+* Student memberikan komentar
+* Menampilkan rata-rata rating tutor
+
+### 8. Dashboard System
+
+* Dashboard Admin
+* Dashboard Tutor
+* Dashboard Student
+
+---
+
+##  Teknologi yang Digunakan
+
+* Laravel
+* PHP
+* MySQL / MariaDB
+* Blade Template Engine
+* Bootstrap / CSS
+* JavaScript
+* Laravel Breeze
+* Git & GitHub
+
+---
+
+##  Struktur Database
+
+### users
+
+* id
+* name
+* email
+* password
+* role
+
+### subjects
+
+* id
+* nama_mapel
+
+### tutors
+
+* id
+* nama
+* subject_id
+* bio
+
+### bookings
+
+* id
+* student_id
+* tutor_id
+* tanggal
+* jam
+* status
+
+### materials
+
+* id
+* tutor_id
+* judul
+* deskripsi
+* file
+
+### ratings
+
+* id
+* student_id
+* tutor_id
+* rating
+* komentar
+
+---
+
+##  Instalasi Project
+
+Clone repository:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/fitri-hub/peer-teaching-system.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder project:
 
-## Contributing
+```bash
+cd peer-teaching-system
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Install dependency:
 
-## Code of Conduct
+```bash
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copy file environment:
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Generate application key:
 
-## License
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# peer-teaching-system
->>>>>>> 6ebf8779239b7110f9034f677f9631bf041bf1bd
+Konfigurasi database pada file `.env`.
+
+Jalankan migration:
+
+```bash
+php artisan migrate
+```
+
+Buat symbolic link storage:
+
+```bash
+php artisan storage:link
+```
+
+Jalankan server:
+
+```bash
+php artisan serve
+```
+
+Jalankan Vite:
+
+```bash
+npm run dev
+```
+
+---
+
+##  Screenshot
+
+Tambahkan screenshot berikut:
+
+* Halaman Login
+* Dashboard Admin
+* Dashboard Tutor
+* Dashboard Student
+* Manajemen Mata Pelajaran
+* Manajemen Tutor
+* Booking Tutor
+* Sistem Materi
+* Sistem Rating
+
+---
+
+##  Tim Pengembang
+
+* FitriAni (2408107010022)
+* Azira Kania (2408107010025)
+* Zahra Rizkyna (2408107010031)
+* Syakila Naira (2408107010034)
+
+---
+
+##  License
+
+Project ini dikembangkan untuk memenuhi Ujian Akhir Semester Praktikum Pemrograman Berbasis Web
