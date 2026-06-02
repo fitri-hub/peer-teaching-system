@@ -101,14 +101,6 @@
             color: var(--mortar) !important;
         }
 
-        .navbar-greeting {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.82rem;
-            color: var(--pharlap);
-            font-weight: 500;
-            padding: 0 16px;
-        }
-
         .navbar-user-badge {
             background: var(--linen);
             border: 1px solid var(--rose-fog);
@@ -160,12 +152,6 @@
             font-weight: 600;
         }
 
-        .page-subtitle {
-            font-size: 0.82rem;
-            color: var(--pharlap);
-            margin-top: 2px;
-        }
-
         /* ── CARDS ── */
         .card {
             border: none !important;
@@ -178,11 +164,14 @@
         .card-header {
             background: #fff !important;
             border-bottom: 1px solid var(--azalea) !important;
-            padding: 16px 20px !important;
+            padding: 14px 20px !important;
             font-family: 'Playfair Display', serif;
             font-size: 1rem;
             color: var(--mortar);
             font-weight: 600;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
         }
 
         .stat-card {
@@ -202,9 +191,6 @@
         .stat-card-1 { background: linear-gradient(135deg, var(--pharlap), #c4898f) !important; }
         .stat-card-2 { background: linear-gradient(135deg, var(--mortar), #6a5d70) !important; }
         .stat-card-3 { background: linear-gradient(135deg, #c4898f, var(--rose-fog)) !important; }
-        .stat-card-4 { background: linear-gradient(135deg, #6a5d70, var(--pharlap)) !important; }
-        .stat-card-5 { background: linear-gradient(135deg, var(--rose-fog), var(--azalea)) !important; color: var(--mortar) !important; }
-        .stat-card-6 { background: linear-gradient(135deg, #b8879d, var(--pharlap)) !important; }
 
         .stat-card .stat-number {
             font-family: 'Playfair Display', serif;
@@ -213,8 +199,6 @@
             color: #fff;
             line-height: 1;
         }
-
-        .stat-card-5 .stat-number { color: var(--mortar); }
 
         .stat-card .stat-label {
             font-size: 0.78rem;
@@ -225,8 +209,6 @@
             letter-spacing: 0.8px;
         }
 
-        .stat-card-5 .stat-label { color: var(--pharlap); }
-
         .stat-card .stat-icon {
             position: absolute;
             right: 18px;
@@ -235,8 +217,6 @@
             font-size: 2.8rem;
             color: rgba(255,255,255,0.15);
         }
-
-        .stat-card-5 .stat-icon { color: rgba(167,118,124,0.15); }
 
         /* ── TABLE ── */
         .table thead th {
@@ -320,15 +300,6 @@
 
         .btn-sm { padding: 5px 14px !important; font-size: 0.78rem !important; }
 
-        /* ── FOOTER ── */
-        .main-footer {
-            background: #fff !important;
-            border-top: 1px solid var(--azalea) !important;
-            color: var(--pharlap) !important;
-            font-size: 0.8rem;
-            padding: 14px 24px !important;
-        }
-
         /* ── DECORATIVE ── */
         .page-deco {
             position: fixed;
@@ -358,16 +329,6 @@
             margin-bottom: 24px;
         }
 
-        .welcome-banner::before {
-            content: '👩🏻‍💻';
-            position: absolute;
-            right: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 4rem;
-            opacity: 0.3;
-        }
-
         .welcome-banner h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -391,6 +352,22 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
+        /* ── HAMBURGER BUTTON ── */
+        .pushmenu-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .pushmenu-btn:hover {
+            background: var(--linen);
+        }
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -404,7 +381,7 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                <a class="nav-link pushmenu-btn" data-widget="pushmenu" href="#" role="button" id="sidebarToggle">
                     <i class="fas fa-bars" style="color:var(--pharlap)"></i>
                 </a>
             </li>
@@ -544,14 +521,24 @@
         </div>
     </div>
 
-    <footer class="main-footer text-center">
-        <strong style="font-family:'Playfair Display',serif">Peer Teaching</strong>
-        &nbsp;·&nbsp; HMIF USK &copy; {{ date('Y') }}
-        &nbsp;·&nbsp; <span style="color:var(--rose-fog)">♥</span> Made with love
-    </footer>
+    {{-- Footer dihapus --}}
 
 </div>
 
 <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+<script>
+    // Fix tombol hamburger ≡ — toggle sidebar
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('sidebarToggle');
+        const body = document.body;
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                body.classList.toggle('sidebar-collapse');
+            });
+        }
+    });
+</script>
 </body>
 </html>

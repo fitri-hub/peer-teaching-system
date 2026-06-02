@@ -2,18 +2,19 @@
     <x-slot name="header">Riwayat Booking</x-slot>
 
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span><i class="fas fa-list-alt mr-2" style="color:var(--pharlap)"></i>Booking Saya</span>
-            <a href="{{ route('bookings.create') }}" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus mr-1"></i> Booking Baru
-            </a>
+        <div class="card-header">
+            <i class="fas fa-list-alt mr-2" style="color:var(--pharlap)"></i>Booking Saya
         </div>
         <div class="card-body p-0">
             @if($bookings->isEmpty())
                 <div class="text-center py-5">
-                    <i class="fas fa-calendar-times" style="font-size:2.5rem;color:var(--rose-fog)"></i>
-                    <p class="mt-3" style="color:var(--pharlap);font-size:0.9rem">Belum ada booking. Yuk buat booking pertamamu!</p>
-                    <a href="{{ route('bookings.create') }}" class="btn btn-primary btn-sm">Booking Sekarang</a>
+                    <div style="width:64px;height:64px;border-radius:50%;background:var(--linen);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <i class="fas fa-calendar-times" style="font-size:1.6rem;color:var(--rose-fog)"></i>
+                    </div>
+                    <p style="color:var(--pharlap);font-size:0.875rem;margin-bottom:16px;">Belum ada booking. Yuk buat booking pertamamu!</p>
+                    <a href="{{ route('bookings.create') }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus mr-1"></i> Booking Sekarang
+                    </a>
                 </div>
             @else
                 <div class="table-responsive">
@@ -32,8 +33,15 @@
                             @foreach($bookings as $i => $booking)
                             <tr>
                                 <td style="color:var(--pharlap);font-weight:600">{{ $i + 1 }}</td>
-                                <td>{{ $booking->tutor->nama }}</td>
-                                <td>{{ $booking->tutor->subject->nama_mapel }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center" style="gap:10px;">
+                                        <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--pharlap),#c4898f);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.8rem;font-weight:700;flex-shrink:0;">
+                                            {{ strtoupper(substr($booking->tutor->nama, 0, 1)) }}
+                                        </div>
+                                        <span style="font-weight:500;">{{ $booking->tutor->nama }}</span>
+                                    </div>
+                                </td>
+                                <td style="color:var(--pharlap);">{{ $booking->tutor->subject->nama_mapel }}</td>
                                 <td>{{ \Carbon\Carbon::parse($booking->tanggal)->format('d M Y') }}</td>
                                 <td>{{ $booking->jam }}</td>
                                 <td>
